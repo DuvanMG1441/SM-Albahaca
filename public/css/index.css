@@ -1,0 +1,122 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('/Imagenes/Albahaca.png');
+    color: #2c3e50;
+    background-color: rgba(0, 0, 0, 0.65); /* Color oscuro con opacidad */
+    background-blend-mode: darken;
+    
+}
+
+/* Estilos del encabezado */
+header {
+    background-color: #91d48b;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
+
+header h1 {
+    font-size: 24px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Sección Hero */
+.hero {
+    background: url('https://source.unsplash.com/1600x900/?agriculture,farm') no-repeat center center/cover;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+.hero-content {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.hero h2 {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 25px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #43a047;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.btn:hover {
+    background: #2e7d32;
+}
+
+/* Sección de características */
+.features {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 50px 20px;
+    gap: 20px;
+}
+
+.feature {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 30%;
+}
+
+.feature h3 {
+    color: #388e3c;
+}
+
+.feature p {
+    color: #555;
+}
+
+/* Pie de página */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #2e7d32;
+    color: white;
+    margin-top: 30px;
+}
