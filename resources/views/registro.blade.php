@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro - EcoFertil</title>
-    <link rel="stylesheet" href="{{ asset('css/registro.css') }}">
-</head>
-<body>
-    <div class="register-container">
+@extends('layout.header')
+@section('content')
+
+<link rel="stylesheet" href="{{ asset('css/registro.css') }}">
+<div class="contenedor">
+<div class="register-container">
         <h2>Crear Cuenta</h2>
         <form method="POST" action="{{ route('registro') }}">
             @csrf
@@ -27,9 +23,18 @@
                 <label for="password">Contraseña</label>
                 <input type="password" name="password" id="password" required>
             </div>
+            <div class="input-group">
+                <label for="password_confirmation">Confirmar Contraseña</label>
+                <input type="password" name="password_confirmation" id="password_confirmation" required>
+            </div>
             <button type="submit" class="btn">Registrarse</button>
         </form>
         <p>¿Ya tienes cuenta? <a href="{{ route('login') }}">Inicia sesión</a></p>
     </div>
-</body>
-</html>
+    <div class="text-container">
+        <h1>Da el primer paso hacia un cultivo inteligente.</h1>
+        <p></p>
+        <h2>Regístrate y optimiza el crecimiento de tu albahaca con monitoreo avanzado</h2>
+    </div>
+</div>
+@endsection

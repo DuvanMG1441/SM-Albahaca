@@ -5,7 +5,153 @@ body {
     background-color: #e8f5e9;
 }
 
-/* HEADER */
+.view {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    height: 100%;
+    background-color: rgba(32,36,41,255);
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar h3 {
+    text-align: center; 
+    width: 100%; 
+    margin-bottom: 20px;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.sidebar ul li {
+    margin: 15px -60px;
+}
+
+.sidebar ul li a,
+.logout-btn {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    padding: 12px;
+    display: block;
+    background: rgba(4,115,101,255);
+    border: none;
+    width: 100%;
+    text-align: left;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sidebar ul li a:hover,
+.logout-btn:hover {
+    background: rgba(100,115,101,255);
+}
+
+.content {
+    flex: 1;
+    padding: 40px;
+    background-color: #f4f4f4;
+}
+
+.close-session{
+    background-color: red;
+}
+.close-session:hover{
+    background-color: rgb(182, 4, 4);
+}
+
+h2 {
+    color: rgba(4,115,101,255);
+}
+
+.cards {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.card h3 {
+    color: rgba(4,115,101,255);
+}
+
+.card p {
+    color: #333;
+}
+
+.card a {
+    text-decoration: none;
+    color: rgba(4,115,101,255);
+    font-weight: bold;
+}
+
+.card a:hover {
+    text-decoration: underline;
+}
+
+
+.content {
+    flex: 1;
+    padding: 40px;
+    background-color: #f4f4f4;
+}
+
+h2 {
+    color: rgba(4,115,101,255);
+}
+
+
+.cards {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.card h3 {
+    color: rgba(4,115,101,255);
+}
+
+.card p {
+    color: #333;
+}
+
+.card a {
+    text-decoration: none;
+    color: rgba(4,115,101,255);
+    font-weight: bold;
+}
+
+.card a:hover {
+    text-decoration: underline;
+}
+
 header {
     background-color: #2e7d32;
     color: white;
@@ -39,7 +185,6 @@ nav .logout-btn:hover {
     background: #b71c1c;
 }
 
-/* CONTENIDO PRINCIPAL */
 .container {
     text-align: center;
     margin: 40px auto;
@@ -50,7 +195,6 @@ h2 {
     color: #2e7d32;
 }
 
-/* CARDS */
 .cards {
     display: flex;
     justify-content: center;

@@ -1,6 +1,6 @@
 @extends('layout.header')
 @section('content')
-
+<link rel="stylesheet" href="{{ asset('css/index.css') }}">
     
     <section class="hero">
         <div class="hero-content">

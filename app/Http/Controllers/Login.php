@@ -9,6 +9,10 @@ class Login extends Controller
 {
     public function showLogin()
     {
+        if (Auth::check()) {
+            return redirect('/Inicio');
+        }
+
         return view('login');
     }
 
@@ -29,4 +33,3 @@ class Login extends Controller
         ]);
     }
 }
-

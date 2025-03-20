@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - EcoFertil</title>
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-</head>
-<body>
+@extends('layout.header')
+@section('content')
+<link rel="stylesheet" href="{{ asset('css/login.css') }}">
+<div class="contenedor">
+    <div class="text">
+        <h1>Convierte cada cosecha en una experiencia.</h1>
+        <h2>Monitorea, optimiza y cultiva con inteligencia</h2>
+    </div>
     <div class="login-container">
         <h2>Iniciar Sesión</h2>
         <form method="POST" action="{{ route('login') }}">
@@ -24,5 +22,6 @@
         </form>
         <p>¿No tienes cuenta? <a href="{{ route('registro') }}">Registrate Aqui</a></p>
     </div>
-</body>
-</html>
+</div>
+@endsection
+

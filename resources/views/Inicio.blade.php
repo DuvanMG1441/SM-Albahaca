@@ -1,27 +1,27 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio - EcoFertil</title>
-    <link rel="stylesheet" href="{{ asset('css/inicio.css') }}">
-</head>
-<body>
-    <header>
-        <h1>EcoFertil</h1>
-        <nav>
-            <a href="#">Inicio</a>
-            <a href="#">Acerca</a>
-            <a href="#">Contacto</a>
-            <form method="POST" action="{{ route('logout') }}" style="display: inline;">
-                @csrf
-                <button type="submit" class="logout-btn">Cerrar Sesión</button>
-            </form>
-        </nav>
-    </header>
+@extends('layout.header')
+@section('content')
+<link rel="stylesheet" href="{{ asset('css/inicio.css') }}">
 
-    <main class="container">
-        <h2>Bienvenido {{ Auth::user()->name }}</h2>
+<div class="view ">
+    <aside class="sidebar">
+        <div class="position-fixed">
+            <h3>Menú</h3>
+            <ul>
+                <li><a href="#">Crear Proyecto</a></li>
+                <li><a href="#">Ver Proyectos</a></li>
+                <li><a href="#">Perfil</a></li>
+                <li>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="logout-btn close-session">Cerrar Sesión</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </aside>
+
+    <main class="content">
+        <h2>Bienvenido, {{ Auth::user()->name }}</h2>
         <div class="cards">
             <div class="card">
                 <h3>Configuración del Perfil</h3>
@@ -40,5 +40,5 @@
             </div>
         </div>
     </main>
-</body>
-</html>
+</div>
+@endsection
