@@ -27,7 +27,7 @@
                 <label for="password_confirmation">Confirmar Contraseña</label>
                 <input type="password" name="password_confirmation" id="password_confirmation" required>
             </div>
-            <button type="submit" class="btn">Registrarse</button>
+            <button onclick="Swal.fire('¡Hola!', 'Esto es un mensaje de SweetAlert2', 'success')" type="submit" class="btn">Registrarse</button>
         </form>
         <p>¿Ya tienes cuenta? <a href="{{ route('login') }}">Inicia sesión</a></p>
     </div>

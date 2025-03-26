@@ -12,6 +12,6 @@ class Inicio extends Controller
     Auth::logout();
     $request->session()->invalidate();
     $request->session()->regenerateToken();
-    return redirect('/login');
+    return redirect('/login') -> with('cierre','Se ha cerrado la sesion correctamente');
 }
 }

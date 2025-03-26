@@ -11,9 +11,9 @@
                 <li><a href="#">Ver Proyectos</a></li>
                 <li><a href="#">Perfil</a></li>
                 <li>
-                    <form method="POST" action="{{ route('logout') }}">
+                    <form method="POST" action="{{ route('logout') }}" class="alert-logout">
                         @csrf
-                        <button type="submit" class="logout-btn close-session">Cerrar Sesión</button>
+                        <button type="submit" class="logout-btn close-session ">Cerrar Sesión</button>
                     </form>
                 </li>
             </ul>
@@ -41,4 +41,41 @@
         </div>
     </main>
 </div>
+
+@endsection
+
+@section('js')
+
+@if (session('login') == 'Se ha iniciado la sesion correctamente')
+<script>
+            Swal.fire({
+                icon: "success",
+                title: "Ingreso Exitoso",
+                text: "Bienvenido a Eco Fertil",
+                showConfirmButton: false,
+                timer: 2000
+                });
+        </script>
+@endif
+
+<script>
+
+    $('.alert-logout').submit(function(e){
+        e.preventDefault();
+        Swal.fire({
+            title: "¿ESTAS SEGURO?",
+            text: "Tu sesion se cerrara",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Si, Estoy Seguro"
+            }).then((result) => {
+            if (result.isConfirmed) {
+                this.submit();
+            }
+            });
+    })
+</script>
+
 @endsection

@@ -1,6 +1,7 @@
 @extends('layout.header')
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+
 <div class="contenedor">
     <div class="text">
         <h1>Convierte cada cosecha en una experiencia.</h1>
@@ -23,5 +24,32 @@
         <p>¿No tienes cuenta? <a href="{{ route('registro') }}">Registrate Aqui</a></p>
     </div>
 </div>
+
 @endsection
 
+@section('js')
+   
+@if (session('error') == 'Credenciales incorrectas.')
+<script>
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "Datos del usuario no encontrados",
+                showConfirmButton: false,
+                timer: 2000
+                });
+        </script>
+@endif
+    
+@if (session('cierre') == 'Se ha cerrado la sesion correctamente')
+        <script>
+            Swal.fire({
+                icon: "success",
+                title: "Tu sesion se ha cerrado correctamente",
+                showConfirmButton: false,
+                timer: 2000
+                });
+        </script>
+    @endif
+
+@endsection

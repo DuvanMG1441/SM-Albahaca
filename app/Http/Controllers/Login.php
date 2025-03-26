@@ -10,7 +10,7 @@ class Login extends Controller
     public function showLogin()
     {
         if (Auth::check()) {
-            return redirect('/Inicio');
+            return redirect('/Inicio') -> with('login','Se ha iniciado la sesion correctamente');;
         }
 
         return view('login');
@@ -22,14 +22,13 @@ class Login extends Controller
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
-
+    
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/Inicio'); 
-        }
-
+            return redirect('/login') -> with('Exp','login');      }
+    
         return back()->withErrors([
             'email' => 'Las credenciales no coinciden con nuestros registros.',
-        ]);
+        ])->withInput()->with('error', 'Credenciales incorrectas.');
     }
 }
