@@ -7,9 +7,8 @@
         <div class="position-fixed">
             <h3>Menú</h3>
             <ul>
-                <li><a href="#">Crear Proyecto</a></li>
                 <li><a href="#">Ver Proyectos</a></li>
-                <li><a href="#">Perfil</a></li>
+                <li><a href="/Perfil">Perfil</a></li>
                 <li>
                     <form method="POST" action="{{ route('logout') }}" class="alert-logout">
                         @csrf
@@ -21,24 +20,26 @@
     </aside>
 
     <main class="content">
-        <h2>Bienvenido, {{ Auth::user()->name }}</h2>
-        <div class="cards">
-            <div class="card">
-                <h3>Configuración del Perfil</h3>
-                <p>Administra tu información personal y preferencias.</p>
-                <a href="#">Ir a Configuración</a>
-            </div>
-            <div class="card">
-                <h3>Ver Cultivos</h3>
-                <p>Consulta el estado de tus cultivos en tiempo real.</p>
-                <a href="#">Ver Cultivos</a>
-            </div>
-            <div class="card">
-                <h3>Manual de Uso</h3>
-                <p>Aprende cómo usar la plataforma con nuestra guía.</p>
-                <a href="#">Leer Manual</a>
-            </div>
+        <h1>Bienvenido, {{ Auth::user()->name }}</h1>
+        <h2>Configuración de usuario</h2>
+    
+    <div class="cards">
+        <div class="card">
+            <img src="{{ asset('imagenes/sol.png') }}" alt="Albahaca recibiendo luz" class="card-img">
+            <h3>PROPORCIONA LUZ SOLAR</h3>
+            <p>Coloca la albahaca en un lugar donde reciba al menos 6 horas de luz solar directa al día o usa luz artificial si estás en interiores.</p>
         </div>
+        <div class="card">
+            <img src="{{ asset('imagenes/riego.png') }}" alt="Regando albahaca" class="card-img">
+            <h3>RIEGA CONSTANTEMENTE</h3>
+            <p>Mantén la tierra húmeda pero sin encharcar. Riégala cuando la capa superior de la tierra esté seca al tacto.</p>
+        </div>
+        <div class="card">
+            <img src="{{ asset('imagenes/poda.png') }}" alt="Podando albahaca" class="card-img">
+            <h3>PODA REGULARMENTE</h3>
+            <p>Recorta las hojas superiores para estimular el crecimiento y evitar que la planta florezca demasiado pronto.</p>
+        </div>
+    </div>
     </main>
 </div>
 
