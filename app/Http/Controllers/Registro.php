@@ -19,7 +19,7 @@ class Registro extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
-            'phone' => 'required|string|max:15',
+            'phone' => 'required|string|max:10',
             'password' => 'required|min:6|confirmed',
         ]);
 

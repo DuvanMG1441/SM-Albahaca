@@ -50,16 +50,21 @@
             <div class="form-row">
                 <div class="form-group">
                     <label for="current-password">Contraseña Actual</label>
-                    <input type="password" id="current-password" name="current-password">
+                    <input type="password" id="current-password" name="current_password">
                 </div>
 
                 <div class="form-group">
                     <label for="new-password">Nueva Contraseña</label>
-                    <input type="password" id="new-password" name="new-password">
+                    <input type="password" id="new-password" name="new_password">
                 </div>
             </div>
 
             <button type="submit" class="btn">Guardar Cambios</button>
+        </form>
+        <form action="{{ route('perfil.eliminar') }}" method="POST" class="delete_user">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger">Eliminar Cuenta</button>
         </form>
     </div>
 </main>
@@ -72,17 +77,30 @@
 
 @section('js')
 
-@if (session('login') == 'Se ha iniciado la sesion correctamente')
+@if (session('success') == 'Perfil actualizado correctamente.')
 <script>
             Swal.fire({
                 icon: "success",
-                title: "Ingreso Exitoso",
-                text: "Bienvenido a Eco Fertil",
+                title: "Datos Actualizados",
+                text: "Tu información ha sido actualizada correctamente",
                 showConfirmButton: false,
                 timer: 2000
                 });
         </script>
 @endif
+
+@if (session('error'))
+    <script>
+        Swal.fire({
+            icon: "error",
+            title: "Contraseña actual no válida",
+            text: "{{ session('error') }}",
+            showConfirmButton: false,
+            timer: 2000
+        });
+    </script>
+@endif
+
 
 <script>
 
@@ -104,4 +122,23 @@
     })
 </script>
 
+<script>
+    
+    $('.delete_user').submit(function(e){
+        e.preventDefault();
+        Swal.fire({
+            title: "¿ESTAS SEGURO?",
+            text: "Tu cuenta se eliminara",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Si, Estoy Seguro"
+            }).then((result) => {
+            if (result.isConfirmed) {
+                this.submit();
+            }
+            });
+    })
+</script>
 @endsection

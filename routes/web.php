@@ -26,6 +26,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/Perfil', [Perfil::class, 'edit'])->name('perfil.editar');
     Route::put('/Perfil', [Perfil::class, 'update'])->name('perfil.actualizar');
     Route::delete('/Perfil', [Perfil::class, 'destroy'])->name('perfil.eliminar');
+
+
 });
 
 Route::post('/logout', [Inicio::class, 'logout'])->name('logout');
