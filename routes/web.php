@@ -22,6 +22,11 @@ Route::get('/Inicio', function () {
 })->middleware('auth');
 
 
+Route::get('/AcercaDe', function () {
+    return view('acerca');
+})->middleware('auth');
+
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/Perfil', [Perfil::class, 'edit'])->name('perfil.editar');
     Route::put('/Perfil', [Perfil::class, 'update'])->name('perfil.actualizar');

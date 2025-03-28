@@ -33,7 +33,7 @@
                     <a class="nav-link fs-4 text-white" href="#">Manual</a>
                 </li>
                 <li class="nav-item me-5">
-                    <a class="nav-link fs-4 text-white">Acerca De</a>
+                    <a class="nav-link fs-4 text-white" href="/AcercaDe">Acerca De</a>
                 </li>
             </ul>
         </div>
