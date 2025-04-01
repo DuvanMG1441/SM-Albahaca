@@ -30,6 +30,6 @@ class Registro extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('login')->with('success', 'Registro exitoso, ahora puedes iniciar sesión.');
+        return redirect()->route('login')->with('registro', 'Registro exitoso, ahora puedes iniciar sesión.');
     }
 }

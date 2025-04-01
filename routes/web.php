@@ -30,7 +30,8 @@ Route::get('/AcercaDe', function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/Perfil', [Perfil::class, 'edit'])->name('perfil.editar');
     Route::put('/Perfil', [Perfil::class, 'update'])->name('perfil.actualizar');
-    Route::delete('/Perfil', [Perfil::class, 'destroy'])->name('perfil.eliminar');
+    Route::delete('/Perfil/{user}', [Perfil::class, 'destroy'])->name('perfil.eliminar');
+
 
 
 });

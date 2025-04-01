@@ -52,4 +52,30 @@
         </script>
     @endif
 
+    @if (session('registro') == 'Registro exitoso, ahora puedes iniciar sesión.')
+        <script>
+            Swal.fire({
+                icon: "success",
+                title: "Registro Exitoso",
+                text: "Ahora puedes iniciar sesion",
+                showConfirmButton: false,
+                timer: 2000
+                });
+        </script>
+    @endif
+
+    @if (session('delete') == 'Tu cuenta ha sido eliminada correctamente.')
+        <script>
+            Swal.fire({
+                icon: "success",
+                title: "Cuenta Eliminada Correctamente",
+                text: "Tus datos han sido eliminados",
+                showConfirmButton: false,
+                timer: 2000
+                });
+        </script>
+    @endif           
+
 @endsection
+
+

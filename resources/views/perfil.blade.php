@@ -50,18 +50,18 @@
             <div class="form-row">
                 <div class="form-group">
                     <label for="current-password">Contraseña Actual</label>
-                    <input type="password" id="current-password" name="current_password">
+                    <input type="password" id="current_password" name="current_password">
                 </div>
 
                 <div class="form-group">
                     <label for="new-password">Nueva Contraseña</label>
-                    <input type="password" id="new-password" name="new_password">
+                    <input type="password" id="new_password" name="new_password">
                 </div>
             </div>
 
             <button type="submit" class="btn">Guardar Cambios</button>
         </form>
-        <form action="{{ route('perfil.eliminar') }}" method="POST" class="delete_user">
+        <form action="{{ route('perfil.eliminar', Auth::user()->id) }}" method="POST" class="delete_user">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger">Eliminar Cuenta</button>
@@ -89,7 +89,7 @@
         </script>
 @endif
 
-@if (session('error'))
+@if (session('error') == 'La contraseña actual es incorrecta.')
     <script>
         Swal.fire({
             icon: "error",
