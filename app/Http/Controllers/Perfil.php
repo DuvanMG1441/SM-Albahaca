@@ -25,7 +25,7 @@ class Perfil extends Controller
     $request->validate([
         'name' => 'required|string|max:255',
         'email' => 'required|email|unique:users,email,' . $user->id,
-        'Telefono' => 'required|digits_between:7,10|numeric',
+        'phone' => 'required|string|max:10',
         'current_password' => 'nullable|min:6', 
         'new_password' => 'nullable|min:6', 
     ]);
@@ -42,7 +42,7 @@ class Perfil extends Controller
 
     $user->name = $request->name;
     $user->email = $request->email;
-    $user->Telefono = $request->Telefono;
+    $user->phone = $request->phone;
 
     $user->save(); 
 

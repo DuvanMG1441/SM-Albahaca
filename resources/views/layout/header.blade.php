@@ -24,13 +24,13 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav w-100 justify-content-end" >
                 <li class="nav-item me-5">
-                    <a class="nav-link active fs-4 text-white" aria-current="page" href="/">Inicio</a>
+                    <a class="nav-link active fs-4 text-white" aria-current="page" href="/Inicio">Inicio</a>
                 </li>
                 <li class="nav-item me-5">
-                    <a class="nav-link fs-4 text-white" href="#">Mis Proyectos</a>
+                    <a class="nav-link fs-4 text-white" href="/Proyecto">Mis Proyectos</a>
                 </li>
                 <li class="nav-item me-5">
-                    <a class="nav-link fs-4 text-white" href="#">Manual</a>
+                    <a class="nav-link fs-4 text-white" href="/Manual">Manual</a>
                 </li>
                 <li class="nav-item me-5">
                     <a class="nav-link fs-4 text-white" href="/AcercaDe">Acerca De</a>

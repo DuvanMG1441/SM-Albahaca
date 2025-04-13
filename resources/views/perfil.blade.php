@@ -7,7 +7,7 @@
         <div class="position-fixed">
             <h3>Menú</h3>
             <ul>
-                <li><a href="#">Ver Proyectos</a></li>
+                <li><a href="/Proyecto">Ver Proyectos</a></li>
                 <li><a href="/Perfil">Perfil</a></li>
                 <li>
                     <form method="POST" action="{{ route('logout') }}" class="alert-logout">
@@ -41,7 +41,7 @@
 
                 <div class="form-group">
                     <label for="phone">Teléfono</label>
-                    <input type="text" id="Telefono" name="Telefono" value="{{ Auth::user()->Telefono }}">
+                    <input type="text" id="phone" name="phone" value="{{ Auth::user()->phone }}">
                 </div>
             </div>
 
