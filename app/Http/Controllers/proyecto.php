@@ -65,5 +65,23 @@ public function update(Request $request, $id)
     return redirect()->route('proyecto.index')->with('success', 'Cultivo actualizado correctamente.');
 }
 
+    public function obtenerDatos($id)
+    {
+        $cultivo = Cultivo::with('datos')->findOrFail($id);
+
+        return response()->json([
+            'descripcion' => $cultivo->Descripcion,
+            'datos' => $cultivo->datos->map(function($dato) {
+                return [
+                    'ph' => $dato->ph,
+                    'temperatura' => $dato->temperatura,
+                    'humedad' => $dato->humedad,
+                    'fecha' => $dato->hora,
+                ];
+            })
+        ]);
+    }
+
+
 }
 

@@ -157,3 +157,16 @@ h2{
         margin-left: 10px;
     }
     
+    .btn-detail {
+        background-color: #4a90e2;
+        color: white;
+        padding: 9px 12px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    .btn-detail:hover {
+        background-color: #357ab8;
+    }
+    

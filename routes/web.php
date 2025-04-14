@@ -34,6 +34,7 @@ Route::get('/Proyecto', [Proyecto::class, 'index'])->name('proyecto.index');
 Route::post('/Proyecto', [Proyecto::class, 'guardar'])->name('cultivo.guardar');
 Route::delete('/Proyecto/{id}', [Proyecto::class, 'destroy'])->name('proyecto.eliminar');
 Route::put('/proyectos/{id}/actualizar', [Proyecto::class, 'update'])->name('proyecto.actualizar');
+Route::get('/cultivo/{id}/datos', [Proyecto::class, 'obtenerDatos'])->name('cultivo.datos');
 
 
 Route::middleware(['auth'])->group(function () {

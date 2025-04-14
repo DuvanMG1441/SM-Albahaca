@@ -54,11 +54,40 @@
                             @method('DELETE')
                             <button type="submit" class="btn btn-delete">Eliminar</button>
                         </form>
+                        <button type="button" class="btn btn-detail" onclick="showDetails('{{ $cultivo->Id_cultivo}}', '{{ $cultivo->Id_descripcion}}')">
+                            Ver Detalles
+                        </button>
                     </td>
+                    
                 </tr>
                 @endforeach
             </tbody>
         </table>
+        
+        <div id="cultivo-details" style="display: none; padding: 20px; margin-top: 20px; border: 1px solid #ccc; border-radius: 8px;">
+    <h2 id="detalle-descripcion" style="text-align:center; margin-bottom:20px;"></h2>
+    <p><strong>ID Cultivo:</strong> <span id="detalle-id"></span></p>
+
+    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+        <thead>
+            <tr style="background-color: #f2f2f2;">
+                <th style="padding: 10px; border: 1px solid #ddd;">pH</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Temperatura</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Humedad</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Fecha</th>
+            </tr>
+        </thead>
+        <tbody id="detalle-tabla">
+            <!-- Aquí se cargan los datos -->
+        </tbody>
+    </table>
+
+    <div style="text-align: right; margin-top: 20px;">
+        <button class="btn btn-save" style="background-color: rgba(4,115,101,255); color: white;">Iniciar Monitoreo</button>
+    </div>
+</div>
+
+
         <h2>Crear nuevo cultivo</h2>
         <form action="{{ route('cultivo.guardar') }}" method="POST">
     @csrf
@@ -93,6 +122,36 @@
 @endsection
 
 @section('js')
+
+<script>
+    function showDetails(id, descripcion) {
+    document.getElementById('cultivo-details').style.display = 'block';
+    document.getElementById('detalle-descripcion').textContent = descripcion;
+
+    const tabla = document.getElementById('detalle-tabla');
+    tabla.innerHTML = '';
+
+    fetch(`/cultivo/${id}/datos`)
+        .then(response => response.json())
+        .then(data => {
+            data.datos.forEach(dato => {
+                const fila = `<tr>
+                    <td>${dato.ph}</td>
+                    <td>${dato.temperatura}</td>
+                    <td>${dato.humedad}</td>
+                    <td>${dato.fecha}</td>
+                </tr>`;
+                tabla.innerHTML += fila;
+            });
+        })
+        .catch(error => {
+            console.error('Error al obtener los datos:', error);
+        });
+}
+
+</script>
+
+
 
 <script>
     document.querySelectorAll('.edit-btn').forEach(button => {

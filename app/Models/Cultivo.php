@@ -16,4 +16,10 @@ class Cultivo extends Model
     public $timestamps = false; 
 
     protected $fillable = ['Id_usuario', 'Descripcion', 'Fecha_inicio', 'Fecha_Final', 'Estado'];
+
+    public function datos()
+    {
+        return $this->hasMany(Dato::class, 'Id_cultivo', 'Id_cultivo');
+    }
+
 }
