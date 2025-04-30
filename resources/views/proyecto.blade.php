@@ -54,7 +54,7 @@
                             @method('DELETE')
                             <button type="submit" class="btn btn-delete">Eliminar</button>
                         </form>
-                        <button type="button" class="btn btn-detail" onclick="showDetails('{{ $cultivo->Id_cultivo}}', '{{ $cultivo->Id_descripcion}}')">
+                        <button type="button" class="btn btn-detail" onclick=" showDetailsUltimo('{{ $cultivo->Id_cultivo}}', '{{ $cultivo->Id_descripcion}}'), grafica('{{ $cultivo->Id_cultivo}}', '{{ $cultivo->Id_descripcion}}')">
                             Ver Detalles
                         </button>
                     </td>
@@ -64,29 +64,72 @@
             </tbody>
         </table>
         
-        <div id="cultivo-details" style="display: none; padding: 20px; margin-top: 20px; border: 1px solid #ccc; border-radius: 8px;">
-    <h2 id="detalle-descripcion" style="text-align:center; margin-bottom:20px;"></h2>
-    <p><strong>ID Cultivo:</strong> <span id="detalle-id"></span></p>
+    <div id="cultivo-details" style="display: none; padding: 20px; margin-top: 20px; border: 1px solid #ccc; border-radius: 8px;">
+        <h2 id="detalle-descripcion" style="text-align:center; margin-bottom:20px;"></h2>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 20px; display: none;">
+            <thead>
+                <tr style="background-color: #f2f2f2;">
+                    <th style="padding: 10px; border: 1px solid #ddd;">pH</th>
+                    <th style="padding: 10px; border: 1px solid #ddd;">Temperatura</th>
+                    <th style="padding: 10px; border: 1px solid #ddd;">Humedad</th>
+                    <th style="padding: 10px; border: 1px solid #ddd;">Fecha</th>
+                </tr>
+            </thead>
+            <tbody id="detalle-tabla">
+            </tbody>
+        </table>
 
-    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
-        <thead>
-            <tr style="background-color: #f2f2f2;">
-                <th style="padding: 10px; border: 1px solid #ddd;">pH</th>
-                <th style="padding: 10px; border: 1px solid #ddd;">Temperatura</th>
-                <th style="padding: 10px; border: 1px solid #ddd;">Humedad</th>
-                <th style="padding: 10px; border: 1px solid #ddd;">Fecha</th>
-            </tr>
-        </thead>
-        <tbody id="detalle-tabla">
-            <!-- Aquí se cargan los datos -->
-        </tbody>
-    </table>
+        <div style="display: flex; justify-content: center; gap: 50px; margin-top: 40px;">
+    
+      
+        <div class="bloque-medicion">
+        <h1>Temperatura (°C)</h1>
+        <div id="circulo-temperatura" class="circulo">
+            <span id="valor-temperatura" class="valor">--</span>
+        </div>
+        <div class="rango">
+            <p>Rango Adecuado: 23 °C a 26 °C</p>
+        </div>
+        <p id="mensaje-temperatura" class="mensaje-indicador"></p>
+    </div>
 
-    <div style="text-align: right; margin-top: 20px;">
-        <button class="btn btn-save" style="background-color: rgba(4,115,101,255); color: white;">Iniciar Monitoreo</button>
+    <div class="bloque-medicion">
+        <h1>PH</h1>
+        <div id="circulo-ph" class="circulo">
+            <span id="valor-ph" class="valor">--</span>
+        </div>
+        <div class="rango">
+            <p>Rango Adecuado: 6.0 a 7.5</p>
+        </div>
+        <p id="mensaje-ph" class="mensaje-indicador"></p>
+    </div>
+
+    <div class="bloque-medicion">
+        <h1>Humedad (%)</h1>
+        <div id="circulo-humedad" class="circulo">
+            <span id="valor-humedad" class="valor">--</span>
+        </div>
+        <div class="rango">
+            <p>Rango Adecuado: 50% a 70%</p>
+        </div>
+        <p id="mensaje-humedad" class="mensaje-indicador"></p>
+    </div>
+
+</div>
+    <div class="grafica">
+        <h1> Detalles del pH </h1>
+        <div id="grafica-ph" style="max-width: 700px; margin: 30px auto;"></div>
+        <h1> Detalles de la humedad </h1>
+        <div id="grafica-humedad" style="max-width: 700px; margin: 30px auto;"></div>
+        <h1> Detalles de la temperatura </h1>
+        <div id="grafica-temperatura" style="max-width: 700px; margin: 30px auto;"></div>
     </div>
 </div>
 
+
+<div>
+    <button class="btn btn-save" style="background-color: rgba(4,115,101,255); color: white;">Iniciar Monitoreo</button>
+</div>
 
         <h2>Crear nuevo cultivo</h2>
         <form action="{{ route('cultivo.guardar') }}" method="POST">
@@ -124,17 +167,35 @@
 @section('js')
 
 <script>
-    function showDetails(id, descripcion) {
+function grafica(id, descripcion) {
+    document.getElementById('valor-ph').textContent = "--";
+    document.getElementById('valor-temperatura').textContent = "--";
+    document.getElementById('valor-humedad').textContent = "--";
     document.getElementById('cultivo-details').style.display = 'block';
     document.getElementById('detalle-descripcion').textContent = descripcion;
 
     const tabla = document.getElementById('detalle-tabla');
     tabla.innerHTML = '';
 
+    // Limpiar gráficas anteriores
+    document.querySelector("#grafica-ph").innerHTML = "";
+    document.querySelector("#grafica-humedad").innerHTML = "";
+    document.querySelector("#grafica-temperatura").innerHTML = "";
+
     fetch(`/cultivo/${id}/datos`)
         .then(response => response.json())
         .then(data => {
+            const datosPH = [];
+            const datosHumedad = [];
+            const datosTemperatura = [];
+            const fechas = [];
+
             data.datos.forEach(dato => {
+                datosPH.push(dato.ph);
+                datosHumedad.push(dato.humedad);
+                datosTemperatura.push(dato.temperatura);
+                fechas.push(dato.fecha);
+
                 const fila = `<tr>
                     <td>${dato.ph}</td>
                     <td>${dato.temperatura}</td>
@@ -143,14 +204,185 @@
                 </tr>`;
                 tabla.innerHTML += fila;
             });
+
+            // Configuración de la gráfica de pH
+            const optionsPH = {
+                chart: {
+                    type: 'line',
+                    height: 350,
+                    toolbar: { show: false }
+                },
+                series: [{
+                    name: 'pH',
+                    data: datosPH
+                }],
+                xaxis: {
+                    categories: fechas,
+                    title: { text: 'Fecha' }
+                },
+                yaxis: {
+                    title: { text: 'pH' },
+                    min: 0,
+                    max: 10
+                },
+                colors: ['#047365'],
+                markers: { size: 5 },
+                annotations: {
+                    yaxis: [
+                        { y: 5.5, y2: 6.0, borderColor: '#FDD835', fillColor: '#FFF59D', opacity: 0.4 },
+                        { y: 6.0, y2: 7.5, borderColor: '#00E396', fillColor: '#b5f5d1', opacity: 0.4 },
+                        { y: 7.5, y2: 8.0, borderColor: '#FDD835', fillColor: '#FFF59D', opacity: 0.4 }
+                    ]
+                }
+            };
+
+            // Configuración de la gráfica de Humedad
+            const optionsHumedad = {
+                chart: {
+                    type: 'line',
+                    height: 350,
+                    toolbar: { show: false }
+                },
+                series: [{
+                    name: 'Humedad (%)',
+                    data: datosHumedad
+                }],
+                xaxis: {
+                    categories: fechas,
+                    title: { text: 'Fecha' }
+                },
+                yaxis: {
+                    title: { text: 'Humedad (%)' },
+                    min: 0,
+                    max: 100
+                },
+                colors: ['#2196F3'], 
+                markers: { size: 5 },
+                annotations: {
+                    yaxis: [
+                        { y: 40, y2: 50, borderColor: '#FDD835', fillColor: '#FFF59D', opacity: 0.4 },
+                        { y: 50, y2: 70, borderColor: '#00E396', fillColor: '#b5f5d1', opacity: 0.4 },
+                        { y: 70, y2: 80, borderColor: '#FDD835', fillColor: '#FFF59D', opacity: 0.4 }
+                    ]
+                }
+            };
+
+            // Configuración de la gráfica de Temperatura
+            const optionsTemperatura = {
+                chart: {
+                    type: 'line',
+                    height: 350,
+                    toolbar: { show: false }
+                },
+                series: [{
+                    name: 'Temperatura (°C)',
+                    data: datosTemperatura
+                }],
+                xaxis: {
+                    categories: fechas,
+                    title: { text: 'Fecha' }
+                },
+                yaxis: {
+                    title: { text: 'Temperatura (°C)' },
+                    min: 0,
+                    max: 50
+                },
+                colors: ['#FF5722'], // Naranja temperatura
+                markers: { size: 5 },
+                annotations: {
+                    yaxis: [
+                        { y: 17, y2: 20, borderColor: '#FDD835', fillColor: '#FFF59D', opacity: 0.4 },
+                        { y: 20, y2: 26, borderColor: '#00E396', fillColor: '#b5f5d1', opacity: 0.4 },
+                        { y: 26, y2: 29, borderColor: '#FDD835', fillColor: '#FFF59D', opacity: 0.4 }
+                    ]
+                }
+            };
+
+            // Renderizar gráficas
+            new ApexCharts(document.querySelector("#grafica-ph"), optionsPH).render();
+            new ApexCharts(document.querySelector("#grafica-humedad"), optionsHumedad).render();
+            new ApexCharts(document.querySelector("#grafica-temperatura"), optionsTemperatura).render();
+
         })
         .catch(error => {
             console.error('Error al obtener los datos:', error);
         });
 }
-
 </script>
 
+
+
+<script>
+    function showDetailsUltimo(id, descripcion) {
+        document.getElementById('valor-ph').textContent = "--";
+        document.getElementById('valor-temperatura').textContent = "--";
+        document.getElementById('valor-humedad').textContent = "--";
+
+        document.getElementById('mensaje-ph').textContent = "";
+        document.getElementById('mensaje-temperatura').textContent = "";
+        document.getElementById('mensaje-humedad').textContent = "";
+
+        document.getElementById('cultivo-details').style.display = 'block';
+        document.getElementById('detalle-descripcion').textContent = descripcion;
+
+        const tabla = document.getElementById('detalle-tabla');
+        tabla.innerHTML = '';
+
+        fetch(`/cultivo/${id}/ultimo-dato`) 
+            .then(response => response.json())
+            .then(data => {
+                if (data.dato) {
+                    const dato = data.dato;
+
+                    const fila = `<tr>
+                        <td>${dato.ph}</td>
+                        <td>${dato.temperatura}</td>
+                        <td>${dato.humedad}</td>
+                        <td>${dato.fecha}</td>
+                    </tr>`;
+
+                    tabla.innerHTML = fila;
+
+                    document.getElementById('valor-ph').textContent = dato.ph;
+                    document.getElementById('valor-temperatura').textContent = dato.temperatura;
+                    document.getElementById('valor-humedad').textContent = dato.humedad;
+
+                    validarIndicador('ph', dato.ph, 6.0, 7.5);
+                    validarIndicador('temperatura', dato.temperatura, 23, 26);
+                    validarIndicador('humedad', dato.humedad, 50, 70);
+                } else {
+                    tabla.innerHTML = '<tr><td colspan="4">No hay datos disponibles.</td></tr>';
+                }
+            })
+            .catch(error => {
+                console.error('Error al obtener el último dato:', error);
+            });
+    }
+
+    function validarIndicador(tipo, valor, min, max) {
+        const margen = 2;
+
+        const circulo = document.getElementById(`circulo-${tipo}`);
+        const mensaje = document.getElementById(`mensaje-${tipo}`);
+
+        let color = 'gray';
+        let texto = 'Sin datos.';
+
+        if (valor >= min && valor <= max) {
+            color = 'green';
+            texto = `Tu ${tipo} es el adecuado.`;
+        } else if ((valor >= min - margen && valor < min) || (valor > max && valor <= max + margen)) {
+            color = 'orange';
+            texto = `Tu ${tipo} está ligeramente fuera del rango óptimo.`;
+        } else {
+            color = 'red';
+            texto = `Tu ${tipo} está fuera del rango adecuado.`;
+        }
+
+        circulo.style.borderColor = color;
+        mensaje.textContent = texto;
+    }
+</script>
 
 
 <script>
