@@ -13,7 +13,7 @@ return new class extends Migration
 {
     Schema::create('datos', function (Blueprint $table) {
         $table->id('Id_dato');
-        $table->unsignedBigInteger('Id_cultivo');
+        $table->unsignedInteger('Id_cultivo');
         $table->float('humedad');
         $table->float('ph');
         $table->float('temperatura');
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('datos');
     }
 };
