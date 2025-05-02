@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cultivo; 
 use Illuminate\Support\Facades\Auth;
+use App\Models\Dato;
 
 class Proyecto extends Controller
 {
@@ -68,7 +69,7 @@ public function update(Request $request, $id)
     public function obtenerDatos($id)
     {
         $cultivo = Cultivo::with('datos')->findOrFail($id);
-
+    
         return response()->json([
             'descripcion' => $cultivo->Descripcion,
             'datos' => $cultivo->datos->map(function($dato) {
@@ -82,6 +83,27 @@ public function update(Request $request, $id)
         ]);
     }
 
+    public function DatoUltimo($id)
+    {
+        $cultivo = Cultivo::findOrFail($id);
+    
+        $ultimoDato = $cultivo->datos()->latest('created_at')->first();
+    
+        if (!$ultimoDato) {
+            return response()->json(['message' => 'No hay datos disponibles'], 404);
+        }
+    
+        return response()->json([
+            'descripcion' => $cultivo->Descripcion,
+            'dato' => [
+                'ph' => $ultimoDato->ph,
+                'temperatura' => $ultimoDato->temperatura,
+                'humedad' => $ultimoDato->humedad,
+                'fecha' => $ultimoDato->hora,
+            ]
+        ]);
+    }
+    
 
 }
 
