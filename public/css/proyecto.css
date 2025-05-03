@@ -126,6 +126,15 @@ h2{
         opacity: 0.8;
     }
 
+    .btn-state-asset {
+        background-color: #047365; 
+        color: white;
+    }  
+    
+    .btn-state-idle {
+        background-color: #DC3545; 
+        color: white;
+    }
 
     .btn-save {
         background: #4CAF50;
@@ -246,5 +255,4 @@ h2{
     font-weight: bold;
     text-align: center;
 }
-    
     
