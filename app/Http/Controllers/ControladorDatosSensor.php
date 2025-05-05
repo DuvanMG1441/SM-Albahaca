@@ -6,11 +6,14 @@ use App\Models\Datos;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\Cultivo; 
+use Illuminate\Support\Facades\Auth;
 
 class ControladorDatosSensor extends Controller
 {
     public function store(Request $request)
     {
+        //$user = Auth::user();
+
         $data = $request->validate([
             'temperatura' => 'required|numeric',
             'humedad' => 'required|numeric',
@@ -18,7 +21,7 @@ class ControladorDatosSensor extends Controller
         ]);
 
         // Buscar cultivo activo
-        $cultivoActivo = Cultivo::where('Estado', 'Activo')->latest()->first();
+        $cultivoActivo = Cultivo::where('Estado', 'Activo')->orderByDesc('Id_cultivo')->first();
 
         if (!$cultivoActivo) {
             return response()->json(['error' => 'No hay cultivos activos'], 404);

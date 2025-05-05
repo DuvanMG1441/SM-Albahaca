@@ -3,4 +3,4 @@
 use App\Http\Controllers\ControladorDatosSensor;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/sensores', [ControladorDatosSensor::class, 'store']);
+Route::middleware('auth:sanctum')->post('/sensores', [ControladorDatosSensor::class, 'store']);

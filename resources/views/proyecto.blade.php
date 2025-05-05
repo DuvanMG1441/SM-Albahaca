@@ -498,19 +498,35 @@
                     buttonsStyling: false,
                     preConfirm: () => {
                         document.getElementById('editForm').submit();
-                        Swal.fire({
-                            icon: "success",
-                            title: "Cultivo Modificado",
-                            text: "La informacion de tu cultivo ha sido actualizada correctamente",
-                            showConfirmButton: false,
-                            timer: 5000
-                        });
                     }
                 });
             });
         });
     </script>
 
+@if (session('success'))
+<script>
+    
+        Swal.fire({
+            icon: "success",
+            title: '¡Éxito!',
+            text: "{{ session('success') }}",
+            timer: 5000,
+            showConfirmButton: false
+        });
+</script>
+@endif
+    @if(session('error'))
+<script>
+        Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "{{ session('error') }}",
+            timer: 5000,
+            showConfirmButton: false
+        });
+</script>
+@endif
 
     @if (session('success') == 'Cultivo agregado correctamente.')
     <script>
