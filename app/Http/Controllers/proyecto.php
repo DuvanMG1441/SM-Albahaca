@@ -18,6 +18,13 @@ class Proyecto extends Controller
 
     public function guardar(Request $request)
     {
+        if ($request->Estado === 'Activo') {
+            $existeActivo = Cultivo::where('Estado', 'Activo')->exists();
+            if ($existeActivo) {
+                return redirect()->back()->with('error', 'Ya hay un cultivo activo. Solo puede haber uno a la vez.');
+            }
+        }
+
         $request->validate([
             'Descripcion' => 'required|string|max:255',
         ]);
@@ -26,7 +33,7 @@ class Proyecto extends Controller
             'Id_usuario' => auth()->id(), 
             'Descripcion' => $request->Descripcion,
             'Fecha_inicio' => now(),
-            'Estado' => 'Activo', 
+            'Estado' => $request->Estado, 
         ]);
     
         return redirect()->route('proyecto.index')->with('success', 'Cultivo agregado correctamente.');
@@ -48,6 +55,13 @@ class Proyecto extends Controller
 
 public function update(Request $request, $id)
 {
+    if ($request->Estado === 'Activo') {
+        $existeActivo = Cultivo::where('Estado', 'Activo')->exists();
+        if ($existeActivo) {
+            return redirect()->route('proyecto.index')->with('error', 'Ya hay un cultivo activo. Solo puede haber uno a la vez.');
+        }
+    }
+    
     $cultivo = Cultivo::where('Id_cultivo', $id)->where('Id_usuario', Auth::id())->first();
 
     if (!$cultivo) {
@@ -62,7 +76,7 @@ public function update(Request $request, $id)
     $cultivo->Descripcion = $request->Descripcion;
     $cultivo->Estado = $request->Estado;
     $cultivo->save();
-
+    
     return redirect()->route('proyecto.index')->with('success', 'Cultivo actualizado correctamente.');
 }
 
