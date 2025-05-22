@@ -26,6 +26,14 @@ Route::get('/AcercaDe', function () {
     return view('acerca');
 })->middleware('auth');
 
+Route::get('/Manual', function () {
+    return view('manual');
+});
+
+Route::get('/Enlaces', function () {
+    return view('enlaces');
+})->middleware('auth');
+
 Route::get('/Proyecto', function () {
     return view('proyecto');
 })->middleware('auth');

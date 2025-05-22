@@ -7,7 +7,7 @@
         <div class="position-fixed">
             <h3>Menú</h3>
             <ul>
-                <li><a href="/Proyectos">Ver Proyectos</a></li>
+                <li><a href="/Proyectos">Mis Macetas</a></li>
                 <li><a href="/Perfil">Perfil</a></li>
                 <li>
                     <form method="POST" action="{{ route('logout') }}" class="alert-logout">
@@ -203,7 +203,6 @@
                         tabla.innerHTML += fila;
                     });
 
-                    // Configuración de la gráfica de pH
                     const optionsPH = {
                         chart: {
                             type: 'line',

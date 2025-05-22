@@ -7,7 +7,7 @@
         <div class="position-fixed">
             <h3>Menú</h3>
             <ul>
-                <li><a href="/Proyecto">Ver Proyectos</a></li>
+                <li><a href="/Proyecto">Mis Macetas</a></li>
                 <li><a href="/Perfil">Perfil</a></li>
                 <li>
                     <form method="POST" action="{{ route('logout') }}" class="alert-logout">

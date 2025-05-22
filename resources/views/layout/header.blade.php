@@ -29,13 +29,16 @@
                     <a class="nav-link active fs-4 text-white" aria-current="page" href="/Inicio">Inicio</a>
                 </li>
                 <li class="nav-item me-5">
-                    <a class="nav-link fs-4 text-white" href="/Proyecto">Mis Proyectos</a>
+                    <a class="nav-link fs-4 text-white" href="/Proyecto">Mis Macetas</a>
                 </li>
                 <li class="nav-item me-5">
                     <a class="nav-link fs-4 text-white" href="/Manual">Manual</a>
                 </li>
                 <li class="nav-item me-5">
-                    <a class="nav-link fs-4 text-white" href="/AcercaDe">Acerca De</a>
+                    <a class="nav-link fs-4 text-white" href="/AcercaDe">Información</a>
+                </li>
+                <li class="nav-item me-5">
+                    <a class="nav-link fs-4 text-white" href="/Enlaces">Enlaces</a>
                 </li>
             </ul>
         </div>
