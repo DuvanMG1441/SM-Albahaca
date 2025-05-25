@@ -6,17 +6,18 @@
 <div class="introduccion">
     <p>Expande tu conocimiento sobre cultivo de albahaca y sistemas de monitoreo IoT</p>
 </div>
-
+<h2>Videos Informativos</h2>
 <div class="videos-section">
     <div class="video-card">
-        <iframe width="100%" height="250" src="https://www.youtube.com/watch?v=CMPmcX7gX7M" frameborder="0" allowfullscreen></iframe>
+        <iframe width="100%" height="250" src="https://www.youtube.com/embed/CMPmcX7gX7M" frameborder="0" allowfullscreen></iframe>
         <p>Cultivo de Albahaca - Siembra y cuidados</p>
     </div>
     <div class="video-card">
-        <iframe width="100%" height="250" src="https://www.youtube.com/watch?v=BU77lTxF5KY" frameborder="0" allowfullscreen></iframe>
+        <iframe width="100%" height="250" src="https://www.youtube.com/embed/BU77lTxF5KY" frameborder="0" allowfullscreen></iframe>
         <p>IoT en la Agricultura</p>
     </div>
 </div>
+
 
 <h2>Documentos relacionados</h2>
 <table class="document-table">
