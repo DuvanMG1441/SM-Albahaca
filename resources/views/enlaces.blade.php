@@ -16,6 +16,10 @@
         <iframe width="100%" height="250" src="https://www.youtube.com/embed/BU77lTxF5KY" frameborder="0" allowfullscreen></iframe>
         <p>IoT en la Agricultura</p>
     </div>
+    <div class="video-card">
+        <iframe width="100%" height="250" src="https://www.youtube.com/embed/2ez-ZyCjtys" frameborder="0" allowfullscreen></iframe>
+        <p>Video tutorial - instalación de dispositivo</p>
+    </div>
 </div>
 
 

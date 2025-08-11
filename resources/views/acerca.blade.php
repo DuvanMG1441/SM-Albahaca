@@ -12,7 +12,7 @@
             </div>
             <div class="texto">
                 <h2>Información de Autores</h2>
-                <p>Estudiantes del programa <strong>Sistematización de Datos</strong> de la <strong>Universidad Distrital Francisco Jose de Caldas</strong>. Vinculados al grupo de investigación <strong>Metis</strong>. El en cual se realiza el desarrollo de proyecto del grado.</p>
+                <p>Estudiantes del programa <strong>Sistematización de Datos</strong> de la <strong>Universidad Distrital Francisco Jose de Caldas</strong>. Vinculados al grupo de investigación <strong>Metis</strong>. En el cual se realiza el desarrollo de proyecto del grado.</p>
             </div>
             <div class="imagenes">
                 <div>

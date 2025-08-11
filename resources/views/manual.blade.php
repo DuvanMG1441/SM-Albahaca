@@ -34,7 +34,7 @@
     </div>
     <hr>
 
-     <h2>Menú Principal</h2>
+    <h2>Menú Principal</h2>
     <div class="bloque">
         <div class="texto">
             <p>Una vez que inicies sesión en, accederás al menú principal, donde podrás navegar fácilmente por las diferentes secciones de la plataforma. En el panel lateral izquierdo encontrarás botones para ver tus proyectos, acceder a tu perfil y cerrar sesión. En el área central de la pantalla se presentan recomendaciones útiles para el cuidado de la albahaca, como proporcionar luz solar adecuada, mantener un riego constante y realizar podas regulares. Esta sección ofrece consejos visuales y prácticos que ayudan a mejorar el crecimiento y la salud de tu cultivo. </p>
@@ -56,7 +56,7 @@
     </div>
     <hr>
 
-     <h2>Perfil de Usuario</h2>
+    <h2>Perfil de Usuario</h2>
     <div class="bloque">
         <div class="texto">
             <p>En la sección de configuración de usuario, los usuarios pueden actualizar fácilmente su información personal. Aquí es posible modificar el nombre completo, el correo electrónico y el número de teléfono directamente en los campos correspondientes. Recuerda ingresar tus datos correctamente. Además, si se desea cambiar la contraseña, basta con ingresar la contraseña actual y establecer una nueva antes de hacer clic en Guardar Cambios. Para quienes deseen cerrar su cuenta de forma definitiva, se encuentra disponible el botón Eliminar Cuenta, que debe utilizarse con precaución, ya que esta acción no se puede deshacer. </p>
@@ -78,7 +78,7 @@
     </div>
     <hr>
 
-     <h2>Mis Macetas</h2>
+    <h2>Mis Macetas</h2>
     <div class="bloque">
         <div class="texto">
             <p>En la sección Ver Proyectos, los usuarios pueden visualizar y gestionar sus cultivos registrados de forma clara y organizada. Se presenta una tabla con información clave como el identificador del cultivo, su descripción, la fecha de inicio, fecha final (si aplica), el estado actual y un conjunto de acciones disponibles. Cada cultivo puede ser editado, eliminado o consultado en mayor detalle mediante botones específicos. Además, se incluye un formulario para crear nuevos cultivos, permitiendo al usuario ingresar una descripción, seleccionar la fecha de inicio y definir el estado del proyecto. Esta interfaz busca facilitar el seguimiento y administración de múltiples cultivos, brindando control total sobre cada etapa del proceso de monitoreo. </p>
@@ -92,10 +92,25 @@
     <h2>Datos de las macetas</h2>
     <div class="bloque invertido">
         <div class="texto">
-            <p>En la sección Ver Detalles de cada una de las materas registradas, podemos visualizar cada uno de los parámetros monitoreados, además con la descripción de cómo es el estado actual por medio de texto y de forma visual con colores. Color verde que es óptimo, amarillo que esta levemente fuera del rango adecuado, pero no es perjudicial para el cultivo y rojo que significa que el parámetro definitivamente no se encuentra en el rango adecuado y debe ser intervenido rápidamente.  En la parte inferior se pueden observar por medio de graficas el comportamiento histórico de los datos para así validar la eficacia del cultivo, de igual forma se representa de manera visual por medio de colores los rangos establecidos para cada uno de los parámetros. </p>
+            <p>En la sección Ver Detalles de cada una de las materas registradas, podemos visualizar cada uno de los parámetros monitoreados, además con la descripción de cómo es el estado actual por medio de texto y de forma visual con colores. Color verde que es óptimo, amarillo que esta levemente fuera del rango adecuado, pero no es perjudicial para el cultivo y rojo que significa que el parámetro definitivamente no se encuentra en el rango adecuado y debe ser intervenido rápidamente. En la parte inferior se pueden observar por medio de graficas el comportamiento histórico de los datos para así validar la eficacia del cultivo, de igual forma se representa de manera visual por medio de colores los rangos establecidos para cada uno de los parámetros. </p>
         </div>
         <div class="imagen">
             <img src="{{ asset('imagenes/manual_dato.png') }}" alt="Foto de vista de inicio de sesion">
+        </div>
+    </div>
+    <hr>
+
+    <h2>¿Cómo configurar tu dispositivo?</h2>
+    <div class="bloque invertido">
+        <div class="texto">
+            <p>Para poner en marcha tu dispositivo, es importante considerar dos aspectos clave: </br>
+                    1. El armado del dispositivo, que incluye la conexión de todos los componentes necesarios. </br>
+                    2. La configuración mediante la aplicación de Arduino, donde se requiere ingresar la información de tu red Wi-Fi. </br>
+                Te recomendamos seguir paso a paso el video tutorial que hemos preparado, donde se explica detalladamente todo el proceso.</p>
+        </div>
+        <div class="video-card">
+            <iframe width="100%" height="300" src="https://www.youtube.com/embed/2ez-ZyCjtys" frameborder="0" allowfullscreen></iframe>
+            <p>Video tutorial configuración de dispositivo</p>
         </div>
     </div>
     <hr>
