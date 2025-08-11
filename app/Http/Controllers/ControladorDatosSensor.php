@@ -12,7 +12,7 @@ class ControladorDatosSensor extends Controller
 {
     public function store(Request $request)
     {
-        //$user = Auth::user();
+        $user = Auth::user();
 
         $data = $request->validate([
             'temperatura' => 'required|numeric',
